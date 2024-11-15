@@ -1,0 +1,6 @@
+# IDEs
+/.vscode
+/.idea
+
+# Haskell
+backend/dist-newstyle
