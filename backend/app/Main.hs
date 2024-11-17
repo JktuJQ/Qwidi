@@ -1,4 +1,6 @@
 module Main where
 
+import Application
+
 main :: IO ()
-main = putStrLn ""
+main = runServer 8080
