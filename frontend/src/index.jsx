@@ -4,7 +4,7 @@ import App from "./App";
 import UserStore from "./store/UserStore.";
 import ClothesStore from "./store/ClothesStore";
 
-export  const Context = createContext(null)
+export const Context = createContext(null)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

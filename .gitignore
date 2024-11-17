@@ -4,3 +4,8 @@
 
 # Haskell
 backend/dist-newstyle
+
+# JS
+frontend/node_modules
+frontend/build
+frontend/package-lock.json
