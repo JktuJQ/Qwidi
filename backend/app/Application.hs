@@ -1,32 +1,27 @@
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeOperators #-}
+{- | 'Application' module sets up web application that
+serves API that is provided by 'Routes' module.
+-}
+module Application
+    (
+    -- * Setup functions
+      application
+    , runServer
+    ) where
 
-module Application where
+import Data.Proxy
 
-import GHC.Generics
+import Servant (serve)
+import Network.Wai (Application)
+import Network.Wai.Handler.Warp (run)
 
-import Data.Aeson
+import Routes (API, server)
 
-import Network.Wai
-import Network.Wai.Handler.Warp
-import Servant
-
--- REST API type signature
-type API = Get '[JSON] Data
-
-data Data = Data
- deriving Generic
-instance ToJSON Data
-
--- Server endpoints
-server :: Server API
-server = return Data
-
--- Creates web application with specified API
+{- | Creates web application with specified API.
+-}
 application :: Application
 application = serve (Proxy :: Proxy API) server
 
--- Starts the server
+{- | Starts the server on specified @port@.
+-}
 runServer :: Int -> IO ()
 runServer port = run port application
